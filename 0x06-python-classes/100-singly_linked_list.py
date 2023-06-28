@@ -7,10 +7,10 @@ class Node:
     """Node class for a singly linked list"""
 
     def __init__(self, data, next_node=None):
-        """Initialize the Node instance
+        """Initialize a Node instance
 
         Args:
-            data (int): The data value of the node
+            data (int): The data value for the node
             next_node (Node): The next node in the linked list (default None)
         """
         self.data = data
@@ -48,7 +48,7 @@ class Node:
             value (Node): The next node to set
 
         Raises:
-            TypeError: If the next_node is not a Node object or None
+            TypeError: If the next_node is not None or a Node object
         """
         if value is not None and not isinstance(value, Node):
             raise TypeError("next_node must be a Node object")
@@ -56,35 +56,38 @@ class Node:
 
 
 class SinglyLinkedList:
-    """Singly Linked List class"""
+    """Singly linked list class"""
 
     def __init__(self):
-        """Initialize the SinglyLinkedList instance"""
+        """Initialize an empty SinglyLinkedList"""
         self.head = None
-
-    def sorted_insert(self, value):
-        """Insert a new Node into the correct sorted position in the list
-
-        Args:
-            value (int): The data value of the new Node
-        """
-        new_node = Node(value)
-
-        if self.head is None or value < self.head.data:
-            new_node.next_node = self.head
-            self.head = new_node
-        else:
-            current = self.head
-            while current.next_node is not None and value >= current.next_node.data:
-                current = current.next_node
-            new_node.next_node = current.next_node
-            current.next_node = new_node
 
     def __str__(self):
         """Return a string representation of the linked list"""
-        nodes = []
+        if self.head is None:
+            return ""
         current = self.head
+        nodes = []
         while current is not None:
             nodes.append(str(current.data))
             current = current.next_node
         return "\n".join(nodes)
+
+    def sorted_insert(self, value):
+        """Insert a new Node into the correct sorted position in the list (increasing order)
+
+        Args:
+            value (int): The value of the new Node
+        """
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+        elif value < self.head.data:
+            new_node.next_node = self.head
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next_node is not None and value > current.next_node.data:
+                current = current.next_node
+            new_node.next_node = current.next_node
+            current.next_node = new_node
