@@ -6,7 +6,7 @@ def search_replace(my_list, search, replace):
 
     # Iterate over the elements in the input list
     for item in my_list:
-        # If the element matches the search value, replace it with the new value
+        # If the element matches the search value, replace with the new value
         if item == search:
             result.append(replace)
         else:
