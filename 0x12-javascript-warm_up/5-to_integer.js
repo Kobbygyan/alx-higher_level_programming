@@ -10,5 +10,5 @@ const number = parseInt(arg1, 10);
 if (!isNaN(number)) {
   console.log(`My number: ${number}`);
 } else {
-  console.log("Not a number");
+  console.log('Not a number');
 }
