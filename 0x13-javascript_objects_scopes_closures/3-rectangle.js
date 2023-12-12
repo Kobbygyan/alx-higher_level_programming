@@ -2,19 +2,17 @@
 
 class Rectangle {
   constructor (w, h) {
-    if (Number.isInteger(w) && w > 0 && Number.isInteger(h) && h > 0) {
+    if (w > 0 && h > 0) {
       this.width = w;
       this.height = h;
     }
   }
 
   print () {
-    for (let i = 0; i < this.height; i++) {
+    for (let i = 1; i <= this.height; i++) {
       let row = '';
-      for (let j = 0; j < this.width; j++) {
-        row += 'X';
-
-     console.log(row);
+      for (let j = 1; j <= this.width; j++) row += 'X';
+      console.log(row);
     }
   }
 }
