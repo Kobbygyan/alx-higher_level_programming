@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 class Rectangle {
   constructor (w, h) {
     if (Number.isInteger(w) && w > 0 && Number.isInteger(h) && h > 0) {
@@ -11,8 +13,8 @@ class Rectangle {
       let row = '';
       for (let j = 0; j < this.width; j++) {
         row += 'X';
-      }
-      console.log(row);
+
+     console.log(row);
     }
   }
 }
